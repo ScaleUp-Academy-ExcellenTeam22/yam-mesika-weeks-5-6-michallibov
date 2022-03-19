@@ -1,5 +1,10 @@
 import os
 
+"""
+In this program I created a function that gets a path to a directory and returns a 
+list of all files in the given directory which start with the word 'deep'
+"""
+
 
 # This function gets a path to a directory and returns a list of the files that start
 # with the word 'deep' in the given directory
