@@ -6,25 +6,25 @@ the default separator is going to be '-'
 """
 
 
-# This function gets a certain amount of lists and joins them into one
-# list where each list we got is separated by a character the user chose.
-# if there's no separator- the default separator is going to be '-'.
 def join(*lists, sep='-'):
     """
+    This function gets a certain amount of lists and joins them into one
+    list where each list we got is separated by a character the user chose.
+    if there's no separator- the default separator is going to be '-'.
     :param lists: the lists we got from the main to join
     :param sep: the char that will separate each list
     :return: the joined list of all lists the function received
     """
-    if not lists:   # the list we got is empty (no list was sent)
-        return None
 
-    new_list = list()
-    for x in lists:
-        new_list.extend(x)      # adds the given list to the output list without []
-        new_list.append(sep)
+    # The list we got is empty (no list was sent)
+    if not lists:
+        raise Exception("No list was found to join")
 
-    new_list.pop()  # remove the last separator
+    new_list = [item for sublist in zip(lists, sep * len(lists)) for item in sublist]
+    new_list.pop()
+
     return new_list
 
 
-print(join([1]))
+if __name__ == '__main__':
+    print(join([1], [1, 2], [4]))
