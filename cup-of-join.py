@@ -20,8 +20,7 @@ def join(*lists, sep='-'):
     if not lists:
         raise Exception("No list was found to join")
 
-    new_list = [item for sublist in zip(lists, sep * len(lists)) for item in sublist]
-    new_list.pop()
+    new_list = [lists for sublist in zip(lists, sep * len(lists)) for item in sublist for lists in item][:-1]
 
     return new_list
 
