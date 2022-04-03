@@ -4,18 +4,19 @@ import calendar
 
 """
 This program gets from the user two dates and generates a date between the two date. If the generated
-date is Monday- the program will print 'I am out of Vinegrate', otherwise it'll print the day of that
+date is Monday- the program will print 'I am out of Venerate', otherwise it'll print the day of that
 date.
 Note- you can only enter dates after the first unix epoch second which was at- 00:00:00 UTC on 1 January 1970
 """
 
 
-def print_solution(day):
+def print_solution(day: datetime):
     """
     This function prints 'I'm out f Vinegret!' if the randed
     date's day is Monday or the day itself if the day is not
     Monday.
     :param day: the day of the randed date
+    :return
     """
     if calendar.day_name[day] == 'Monday':
         print("I'm out of Vinegret!")
@@ -23,7 +24,7 @@ def print_solution(day):
         print(calendar.day_name[day])
 
 
-def randomize(first_timestamp, second_timestamp):
+def randomize(first_timestamp: int, second_timestamp: int) -> datetime:
     """
     This function randomizes a number between the two timestamps which will
     be later converted to a date that is also going to be between the two
@@ -46,7 +47,7 @@ def randomize(first_timestamp, second_timestamp):
     return day
 
 
-def convert_to_timestamp(first_date, second_date):
+def convert_to_timestamp(first_date: datetime, second_date: datetime) -> datetime:
     """
     This function converts the datetime variables to timestamps.
     :param first_date: the first date we received from the user
@@ -61,11 +62,13 @@ def convert_to_timestamp(first_date, second_date):
     return randomize(timestamp1, timestamp2)
 
 
-def convert_to_date(first_date, second_date):
+def convert_to_date(first_date: str, second_date: str) -> datetime:
     """
     This function converts a given date string to a datetime variable.
     :param first_date: the first date we received from the user in a form of string
     :param second_date: the second date we received from the user in a form of string
+    :return the return value is the result of the function convert_to_timestamp which is
+    the dates day that we randomized which is in between the two dates the user input.
     """
     first_converted_date = datetime.datetime.strptime(first_date, "%Y-%m-%d")
     second_converted_date = datetime.datetime.strptime(second_date, "%Y-%m-%d")
